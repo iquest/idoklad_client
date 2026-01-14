@@ -5,9 +5,10 @@ Gem::Specification.new do |s|
   s.description = 'A Ruby client for the IDoklad API'
   s.authors     = ['Jan Voňavka']
   s.email       = 'vonavka@iquest.cz'
-  s.files       = ['lib/idoklad.rb']
-  s.homepage    =
-    'https://rubygems.org/gems/idoklad_client'
+  s.homepage    = 'https://github.com/iquest/idoklad_client'
+  s.files       = ['lib/idoklad/client.rb',
+                   'lib/idoklad/configuration.rb',
+                   'lib/idoklad.rb']
   s.license = 'MIT'
   s.add_dependency 'oauth2', '~> 2.0'
 end

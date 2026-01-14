@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative 'client'
+
 # Module for Idoklad
 # This module is used to configure the Idoklad
 # It provides methods to set the configuration and create a client
