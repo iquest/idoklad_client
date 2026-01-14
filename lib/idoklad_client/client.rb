@@ -53,11 +53,17 @@ module IdokladClient
     end
 
     def create(url, params)
-      access.post("#{@url_base}/#{url}", params: params).parsed
+      access.post("#{@url_base}/#{url}") do |req|
+        req.headers['Content-Type'] = 'application/json'
+        req.body = params.to_json
+      end.parsed
     end
 
     def update(url, params)
-      access.put("#{@url_base}/#{url}", params: params).parsed
+      access.put("#{@url_base}/#{url}") do |req|
+        req.headers['Content-Type'] = 'application/json'
+        req.body = params.to_json
+      end.parsed
     end
   end
 end
