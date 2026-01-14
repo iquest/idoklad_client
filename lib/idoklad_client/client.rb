@@ -51,5 +51,13 @@ module IdokladClient
     def request(url)
       access.get("#{@url_base}/#{url}").parsed
     end
+
+    def create(url, params)
+      access.post("#{@url_base}/#{url}", params: params).parsed
+    end
+
+    def update(url, params)
+      access.put("#{@url_base}/#{url}", params: params).parsed
+    end
   end
 end
