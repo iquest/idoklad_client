@@ -2,13 +2,13 @@
 
 require_relative 'client'
 
-# Module for Idoklad
-# This module is used to configure the Idoklad
+# Module for IdokladClient
+# This module is used to configure the IdokladClient
 # It provides methods to set the configuration and create a client
-# The client is used to interact with the Idoklad API
+# The client is used to interact with the iDoklad API
 # The configuration is loaded from environment variables or set to default values
 # The configuration can be overridden by calling the configure method
-module Idoklad
+module IdokladClient
   class << self
     def configure
       yield(configuration)
@@ -17,6 +17,7 @@ module Idoklad
     def configuration
       @configuration ||= Configuration.new(
         api_url: api_url,
+        auth_url: auth_url,
         client_id: ENV.fetch('IDOKLAD_CLIENT_ID', ''),
         client_secret: ENV.fetch('IDOKLAD_CLIENT_SECRET', ''),
         logger: nil
@@ -43,12 +44,16 @@ module Idoklad
       base_url
     end
     # rubocop:enable Metrics/MethodLength
+
+    def auth_url
+      'https://identity.idoklad.cz/server/connect'
+    end
   end
 
   # Configuration class for CsobPaymentGateway
   # This class is used to store the configuration for the CsobPaymentGateway
   class Configuration
-    attr_accessor :api_url, :client_id, :client_secret
+    attr_accessor :api_url, :auth_url, :client_id, :client_secret
 
     attr_reader :logger
 
@@ -60,6 +65,7 @@ module Idoklad
 
     def initialize(hash = {})
       @api_url = hash[:api_url]
+      @auth_url = hash[:auth_url]
       @client_id = hash[:client_id]
       @client_secret = hash[:client_secret]
       @logger = hash[:logger]

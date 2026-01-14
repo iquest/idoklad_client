@@ -6,9 +6,9 @@ Gem::Specification.new do |s|
   s.authors     = ['Jan Voňavka']
   s.email       = 'vonavka@iquest.cz'
   s.homepage    = 'https://github.com/iquest/idoklad_client'
-  s.files       = ['lib/idoklad/client.rb',
-                   'lib/idoklad/configuration.rb',
-                   'lib/idoklad.rb']
+  s.files       = ['lib/idoklad_client/client.rb',
+                   'lib/idoklad_client/configuration.rb',
+                   'lib/idoklad_client.rb']
   s.license = 'MIT'
   s.add_dependency 'oauth2', '~> 2.0'
 end
