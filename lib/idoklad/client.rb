@@ -13,7 +13,8 @@ require 'oauth2'
 #
 #   client = Idoklad.client
 module Idoklad
-  class Client
+  # This class is used for creating the client
+  class Client < OAuth2::Client
     def initialize(
       url: default_configuration.api_url,
       client_id: default_configuration.client_id,
@@ -24,8 +25,7 @@ module Idoklad
       @client_id = client_id
       @client_secret = client_secret
       @logger = logger
-
-      OAuth2::Client.new(@client_id, @client_secret, site: @url_base, logger: @logger)
+      super(@client_id, @client_secret, site: @url_base, logger: @logger)
     end
 
     def default_configuration
