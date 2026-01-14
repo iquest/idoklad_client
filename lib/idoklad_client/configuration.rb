@@ -18,6 +18,7 @@ module IdokladClient
       @configuration ||= Configuration.new(
         api_url: api_url,
         auth_url: auth_url,
+        application_id: ENV.fetch('IDOKLAD_APPLICATION_ID', ''),
         client_id: ENV.fetch('IDOKLAD_CLIENT_ID', ''),
         client_secret: ENV.fetch('IDOKLAD_CLIENT_SECRET', ''),
         logger: nil
@@ -46,14 +47,14 @@ module IdokladClient
     # rubocop:enable Metrics/MethodLength
 
     def auth_url
-      'https://identity.idoklad.cz/server/connect'
+      'https://identity.idoklad.cz'
     end
   end
 
   # Configuration class for CsobPaymentGateway
   # This class is used to store the configuration for the CsobPaymentGateway
   class Configuration
-    attr_accessor :api_url, :auth_url, :client_id, :client_secret
+    attr_accessor :api_url, :auth_url, :client_id, :client_secret, :application_id
 
     attr_reader :logger
 
@@ -68,6 +69,7 @@ module IdokladClient
       @auth_url = hash[:auth_url]
       @client_id = hash[:client_id]
       @client_secret = hash[:client_secret]
+      @application_id = hash[:application_id]
       @logger = hash[:logger]
     end
   end
