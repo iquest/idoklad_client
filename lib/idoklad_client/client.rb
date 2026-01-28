@@ -40,7 +40,7 @@ module IdokladClient
         logger: @logger,
         token_url: '/server/v2/connect/token'
       )
-      client.client_credentials.get_token(application_id: default_configuration.application_id,
+      client.client_credentials.get_token(application_id: @application_id,
                                           scope: 'idoklad_api')
     end
 
