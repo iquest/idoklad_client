@@ -2,3 +2,4 @@
 
 require_relative 'idoklad_client/client'
 require_relative 'idoklad_client/configuration'
+require_relative 'idoklad_client/constants'

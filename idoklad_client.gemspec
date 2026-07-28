@@ -7,6 +7,7 @@ Gem::Specification.new do |s|
   s.email       = 'vonavka@iquest.cz'
   s.homepage    = 'https://github.com/iquest/idoklad_client'
   s.files       = ['lib/idoklad_client/client.rb',
+                   'lib/idoklad_client/constants.rb',
                    'lib/idoklad_client/configuration.rb',
                    'lib/idoklad_client.rb']
   s.license = 'MIT'
