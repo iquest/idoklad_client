@@ -48,8 +48,8 @@ module IdokladClient
       IdokladClient.configuration
     end
 
-    def request(url)
-      access.get("#{@url_base}/#{url}").parsed
+    def request(url, params = {})
+      access.get("#{@url_base}/#{url}", params: params).parsed
     end
 
     def create(url, params)
@@ -64,6 +64,66 @@ module IdokladClient
         req.headers['Content-Type'] = 'application/json'
         req.body = params.to_json
       end.parsed
+    end
+
+    def patch(url, params)
+      access.patch("#{@url_base}/#{url}") do |req|
+        req.headers['Content-Type'] = 'application/json'
+        req.body = params.to_json
+      end.parsed
+    end
+
+    def destroy(url, params = nil)
+      access.delete("#{@url_base}/#{url}") do |req|
+        next unless params
+
+        req.headers['Content-Type'] = 'application/json'
+        req.body = params.to_json
+      end.parsed
+    end
+
+    def contacts
+      @contacts ||= Endpoints::Contacts.new(self)
+    end
+
+    def webhooks
+      @webhooks ||= Endpoints::Webhooks.new(self)
+    end
+
+    def issued_invoices
+      @issued_invoices ||= Endpoints::IssuedInvoices.new(self)
+    end
+
+    def proforma_invoices
+      @proforma_invoices ||= Endpoints::ProformaInvoices.new(self)
+    end
+
+    def received_invoices
+      @received_invoices ||= Endpoints::ReceivedInvoices.new(self)
+    end
+
+    def credit_notes
+      @credit_notes ||= Endpoints::CreditNotes.new(self)
+    end
+
+    def sales_receipts
+      @sales_receipts ||= Endpoints::SalesReceipts.new(self)
+    end
+
+    def bank_accounts
+      @bank_accounts ||= Endpoints::BankAccounts.new(self)
+    end
+
+    def bank_statements
+      @bank_statements ||= Endpoints::BankStatements.new(self)
+    end
+
+    def price_list_items
+      @price_list_items ||= Endpoints::PriceListItems.new(self)
+    end
+
+    def numeric_sequences
+      @numeric_sequences ||= Endpoints::NumericSequences.new(self)
     end
   end
 end

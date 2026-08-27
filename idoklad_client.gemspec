@@ -9,6 +9,21 @@ Gem::Specification.new do |s|
   s.files       = ['lib/idoklad_client/client.rb',
                    'lib/idoklad_client/constants.rb',
                    'lib/idoklad_client/configuration.rb',
+                   'lib/idoklad_client/enums.rb',
+                   'lib/idoklad_client/schema.rb',
+                   'lib/idoklad_client/case_converter.rb',
+                   'lib/idoklad_client/endpoints/base.rb',
+                   'lib/idoklad_client/endpoints/contacts.rb',
+                   'lib/idoklad_client/endpoints/webhooks.rb',
+                   'lib/idoklad_client/endpoints/issued_invoices.rb',
+                   'lib/idoklad_client/endpoints/proforma_invoices.rb',
+                   'lib/idoklad_client/endpoints/received_invoices.rb',
+                   'lib/idoklad_client/endpoints/credit_notes.rb',
+                   'lib/idoklad_client/endpoints/sales_receipts.rb',
+                   'lib/idoklad_client/endpoints/bank_accounts.rb',
+                   'lib/idoklad_client/endpoints/bank_statements.rb',
+                   'lib/idoklad_client/endpoints/price_list_items.rb',
+                   'lib/idoklad_client/endpoints/numeric_sequences.rb',
                    'lib/idoklad_client.rb']
   s.license = 'MIT'
   s.add_dependency 'oauth2', '~> 2.0'
