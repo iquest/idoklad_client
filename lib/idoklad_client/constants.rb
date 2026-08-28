@@ -29,4 +29,11 @@ module IdokladClient
     issued_tax_document: 25,
     received_receipt: 34
   }.freeze
+
+  PAYMENT_STATUSES = {
+    unpaid: 0,
+    paid: 1,
+    partial_paid: 2,
+    overpaid: 3
+  }.freeze
 end
